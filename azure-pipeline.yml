@@ -13,7 +13,7 @@ extends:
   template: /yaml/kickstarter-templates/package-pipeline.yml@devops
   parameters:
     packageType: npm
-    requireNvmrc: true
+    requireNvmrc: false
     targetFeed: mobisys-internal
     allowedPublishingBranches: refs/heads/release
     prePublishSteps:
