@@ -1,0 +1,25 @@
+resources:
+  repositories:
+    - repository: devops
+      type: github
+      name: MobisysGmbh/devops-templates
+      endpoint: MobisysGmbH
+      ref: refs/heads/release/v8
+
+trigger: none
+pr: none
+
+extends:
+  template: /yaml/kickstarter-templates/package-pipeline.yml@devops
+  parameters:
+    packageType: npm
+    requireNvmrc: true
+    targetFeed: mobisys-internal
+    allowedPublishingBranches: refs/heads/release
+    prePublishSteps:
+      - task: CopyFiles@2
+        inputs:
+          Contents: 'mobisys-internal-cordova-plugin-powermanagement-*.tgz'
+          TargetFolder: 'publish'
+          CleanTargetFolder: true
+    artifactsDirectoryToPublish: $(Build.SourcesDirectory)/publish
