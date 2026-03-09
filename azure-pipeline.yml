@@ -15,7 +15,7 @@ extends:
     packageType: npm
     requireNvmrc: false
     targetFeed: mobisys-internal
-    allowedPublishingBranches: refs/heads/release
+    allowedPublishingBranches: refs/heads/master
     prePublishSteps:
       - task: CopyFiles@2
         inputs:
